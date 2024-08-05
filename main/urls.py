@@ -7,4 +7,6 @@ from django.urls import path
 
 urlpatterns = [
     path('', home, name='home'),
+    # path('login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('register', views.register, name='register'),
     ]

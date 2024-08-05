@@ -7,6 +7,9 @@ from django.urls import path
 
 urlpatterns = [
     path('', home, name='home'),
-    # path('login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
     path('register', views.register, name='register'),
+path('teacher_dashboard/', views.teacher_dashboard, name='teacher_dashboard'),
+    path('student_dashboard/', views.student_dashboard, name='student_dashboard'),
+    path('role_redirect/', views.role_redirect, name='role_redirect'),
     ]

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.views.generic import DetailView
@@ -19,21 +20,25 @@ def register(request):
         form = UserProfileForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('login')
     else:
         form = UserProfileForm()
     return render(request, 'register/register.html', {'form': form})
 
-def student_login(request):
-    return render(request,'student_login.html')
+def teacher_dashboard(request):
+    # Код для страницы учителя
+    return render(request, 'teacher_dashboard.html')
 
-def teacher_login(request):
-    return render(request, 'teacher_login.html')
+def student_dashboard(request):
+    # Код для страницы студента
+    return render(request, 'student_dashboard.html')
 
-def proverka(request):
-    if Profile.rol == 'role1':
-        return render(request,'student_login.html')
-    elif Profile.rol == 'role2':
-        return render(request,'teacher_login.html')
+@login_required
+def role_redirect(request):
+    profile = request.user.profile
+    if profile.rol == 'role1':
+        return redirect('teacher_dashboard')
+    elif profile.rol == 'role2':
+        return redirect('student_dashboard')
     else:
-        return HttpResponse('Вы не являетесь студентом или учителем')
+        return redirect('другая страница')

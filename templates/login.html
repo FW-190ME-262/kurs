@@ -4,17 +4,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+
     <title>Title</title>
+    <style>
+        body {
+            background-image: url("{% static 'images/ii.png' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
 <body>
-
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button
-            type="submit">Login
-    </button>
-</form>
-
+<div class="d1">
+    <div class="d2">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button
+                    type="submit">Login
+            </button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

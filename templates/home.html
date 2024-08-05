@@ -1,10 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+
+    <title>Home</title>
 </head>
 <body>
-
+<a href='{% url "home" %}'><h2>sozdanie kursa</h2></a>
+<a href='{% url "student_dashboard" %}'><h2>student</h2></a>
+<a href='{% url "home" %}'><h2>dobaviti</h2></a>
+<a href='{% url "register" %}'><h2>register</h2></a>
 </body>
 </html>

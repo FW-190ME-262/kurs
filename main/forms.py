@@ -4,6 +4,7 @@ from django_recaptcha.fields import ReCaptchaField
 from django import forms
 from .models import Profile
 
+
 class UserProfileForm(forms.ModelForm):
     recaptcha = ReCaptchaField()
     username = forms.CharField(max_length=100)
@@ -14,10 +15,11 @@ class UserProfileForm(forms.ModelForm):
     bio = forms.CharField(widget=forms.Textarea)
 
 
+
+
     class Meta:
         model = Profile
         fields = ['username', 'email', 'first_name', 'last_name', 'password', 'bio', 'rol', 'recaptcha']
-
 
     def save(self, commit=True):
         user = User.objects.create_user(

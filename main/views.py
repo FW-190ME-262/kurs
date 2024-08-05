@@ -9,10 +9,9 @@ from django.http import HttpResponse
 from .forms import UserProfileForm
 from .models import Profile
 
+
 def home(request):
     return render(request, 'home.html')
-
-
 
 
 def register(request):
@@ -25,13 +24,20 @@ def register(request):
         form = UserProfileForm()
     return render(request, 'register/register.html', {'form': form})
 
+
 def teacher_dashboard(request):
     # Код для страницы учителя
     return render(request, 'teacher_dashboard.html')
 
+
 def student_dashboard(request):
-    # Код для страницы студента
-    return render(request, 'student_dashboard.html')
+    profile = request.user.profile
+    print(profile)
+    user = request.user
+    print(user)
+
+    return render(request, 'student_dashboard.html', {'user': user, 'profile': profile})
+
 
 @login_required
 def role_redirect(request):

@@ -16,12 +16,16 @@
     </style>
 </head>
 <body>
-<div class="d1">
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
-</div>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button
+            type="submit">Login
+    </button>
+    <a href='{% url "home" %}'><h2>home</h2></a>
+
+</form>
+
 </body>
 </html>
